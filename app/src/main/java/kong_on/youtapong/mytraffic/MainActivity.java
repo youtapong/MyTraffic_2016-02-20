@@ -17,5 +17,13 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        //Bind Widget
+        bindWidgt();
+
     }//Main Method
+
+    private void bindWidgt() {
+        trafficListView = findViewById(R.id.listView);
+        aboutMeButton = (Button) findViewById(R.id.button);
+    }
 } // Main Class
