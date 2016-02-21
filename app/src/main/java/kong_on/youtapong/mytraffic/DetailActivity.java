@@ -2,11 +2,12 @@ package kong_on.youtapong.mytraffic;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-public class DetailActivity extends AppCompatActivity {
+public class DetailActivity extends AppCompatActivity implements View.OnClickListener {
 
     //explicxit
     private TextView titleTextview, detailTextView;
@@ -14,7 +15,7 @@ public class DetailActivity extends AppCompatActivity {
     private Button preButton, backButton, nextbutton;
     private int[] iconInts;
     private String[] titleStrings, detailLongStrings;
-    private  int myIndexAnInt;
+    private int myIndexAnInt;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,7 +27,18 @@ public class DetailActivity extends AppCompatActivity {
 
         //Show view
         showView();
+
+        buttonController();
+
+
     }
+
+    private void buttonController() {
+        preButton.setOnClickListener(this);
+        backButton.setOnClickListener(this);
+        nextbutton.setOnClickListener(this);
+
+    }// buttoncontroller
 
     private void showView() {
         //Receive Value from Intent
@@ -59,4 +71,26 @@ public class DetailActivity extends AppCompatActivity {
 
     }///bind widget
 
-}
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.button2:
+                myIndexAnInt -= 1;
+                if(myIndexAnInt < 0){myIndexAnInt = 19;}
+                changView(myIndexAnInt);
+                break;
+
+            case R.id.button3:
+                finish();
+                break;
+
+            case R.id.button4:
+                myIndexAnInt += 1;
+                if(myIndexAnInt >= 20){myIndexAnInt = 0;}
+                changView(myIndexAnInt);
+                break;
+        }//switch
+
+
+    }//on click
+}// main class
