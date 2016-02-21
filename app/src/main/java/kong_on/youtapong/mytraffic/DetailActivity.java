@@ -30,10 +30,22 @@ public class DetailActivity extends AppCompatActivity {
 
     private void showView() {
         //Receive Value from Intent
+        titleStrings = getIntent().getStringArrayExtra("Title");
+        iconInts = getIntent().getIntArrayExtra("Image");
+        myIndexAnInt = getIntent().getIntExtra("Index", 0);
+
+        detailLongStrings = getResources().getStringArray(R.array.detail_long);
+
+        changView(myIndexAnInt);
 
 
+    }
 
+    private void changView(int myIndexAnInt) {
 
+        titleTextview.setText(titleStrings[myIndexAnInt]);
+        trafficImageView.setImageResource(iconInts[myIndexAnInt]);
+        detailTextView.setText(detailLongStrings[myIndexAnInt]);
     }
 
     private void bindwidget() {
